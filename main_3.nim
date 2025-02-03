@@ -5,6 +5,29 @@ var text = """English texts for b3ginners to practice read7ng and comprehension 
 # Ниже произведите действия над переменной text
 var schars, counter, numbers: int
 
+schars = 0
+counter = 0
+numbers = 0
+
+for c in text:
+    if c in {'.', ',', ':', ';', '!', '?', '"', '\'', '#', '$', '%', '&', '@', '(', ')', '[', ']', '+', '-', '*', '/', '\\', '=', '>', '<', '-', '_', '{', '}', ' ', '|'}:
+        schars += 1
+
+for c in text.toLowerAscii():
+    if c == 'a':
+        counter += 1
+
+var numbersStr: string = ""
+let digitPattern = re(r"\d+")
+for match in text.findAll(digitPattern):
+    numbersStr &= match
+
+if numbersStr.len > 0:
+    numbers = parseInt(numbersStr)
+
+echo schars
+echo counter
+echo numbers
 
 
 # Не изменяйте код ниже

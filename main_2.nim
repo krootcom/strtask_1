@@ -5,7 +5,24 @@ const RootDir = "folder"
 # Ниже реализуйте требуемую задачу
 var dirs, files, exts: seq[string]
 
+proc traverse(path: string) =
+    for kind, path in walkDir(path):
+        if kind == pcDir:
+            dirs.add(path.replace(" ", "_"))
+            traverse(path)
+        elif kind == pcFile:
+            let fileName = path.extractFilename()
+            files.add(fileName)
+            let ext = splitFile(fileName).ext
+            if ext.len > 0:
+                exts.add(ext)
 
+dirs.add(RootDir.replace(" ", "_"))
+traverse(RootDir)
+
+#echo dirs
+#echo files
+#echo exts
 
 # Не изменяйте код ниже
 import sets

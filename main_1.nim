@@ -4,7 +4,17 @@ var text = """Фонетическое значение буквы "ë" нево
 
 # Ниже произведите действия над переменной text
 
+text = text.replace("е", "ё")
+let sentences = text.split('.') 
+var reversedSentences: seq[string] = @[]
 
+for sentence in sentences:
+    if sentence.strip().len > 0:
+        let reversedSentence = "." & sentence.strip().reversed().join("")
+        reversedSentences.add(reversedSentence)
+
+text = reversedSentences.join("\n")
+#echo text
 
 # Не трогайте эту часть кода. Выводить text в консоль не обязательно.
 doAssert text == """.ьтинёцоёрёп онжомзовён "ë" ывкуб ёинёчанз ёоксёчитёноФ
